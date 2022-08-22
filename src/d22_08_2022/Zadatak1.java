@@ -37,12 +37,12 @@ public class Zadatak1 {
 		System.out.println();
 		
 		Autor autor3 = new Autor();
-		autor3.setIme("Vojislav");
-		autor3.setPrezime("Šešelj");
+		autor3.setIme("Milan");
+		autor3.setPrezime("Jovanovic");
 		
 		Knjiga knjiga3 = new Knjiga();
 		knjiga3.setIsbn("978-86-7886-068-3");
-		knjiga3.setNaziv("Južnokorejska gnjida O-Gon Kvon");
+		knjiga3.setNaziv("Lexington band: Biografija");
 		knjiga3.setGodIzdanja(2009);
 		knjiga3.setAutor(autor3);
 		knjiga3.printKnjiga();
