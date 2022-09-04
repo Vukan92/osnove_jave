@@ -122,18 +122,7 @@ public class Zadatak {
 		System.out.println("Nereseno:" + draw);
 		System.out.println();
 		System.out.println();
-
-		
 		}	
 		s.close();
-//igra.printTablu();			
-		
-		
-	
-	
-		
-		
-		
 	}
-
 }

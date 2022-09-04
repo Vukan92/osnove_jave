@@ -38,13 +38,11 @@ public class XandOGame extends Player {
 //	Pobednik je ukoliko prosledjeni igrac ima 3 vezana svoja znaka ili po koloni ili po redu ili po dijgonalama
 //	Metodu isWinnerO -  metoda vraca rezultat igre za igraca O.
 //	Pobednik je ukoliko prosledjeni igrac ima 3 vezana svoja znaka ili po koloni ili po redu ili po dijgonalama
-//	Metodu isigracidMove koja vraca informaciju da li je 
-//	pozicija na koju igrac zeli da odigra potez igracidna. Pozicija je igracidna ako je u opsegu od 0 do 8
+//	Metodu isValidMove koja vraca informaciju da li je pozicija na koju igrac zeli da odigra potez validna. Pozicija je validna ako je u opsegu od 0 do 8
 //	Metodu gameScore, metoda vraca informaciju za kraj igre.
 //	Ukoliko je pobednik igrac x, metoda vraca 1
 //	Ukoliko je pobednik igrac o, metoda vraca 2
 //	Ukoliko nemam pobednika vracamo 0
-	
 
 	
 	private ArrayList<String> table = new ArrayList<String>();
@@ -174,6 +172,4 @@ public class XandOGame extends Player {
 		}
 		return 0;
 	}
-
-	
 }
