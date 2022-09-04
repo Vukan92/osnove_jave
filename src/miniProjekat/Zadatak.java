@@ -79,8 +79,7 @@ public class Zadatak {
 		System.out.println("NOVA PARTIJA:");
 		System.out.println();
 		igra.printTablu();
-		while(igra.isGameOver() == false && igra.isWinner0() == false && igra.isWinnerX() == false) {
-			
+		while(!igra.isGameOver() && !igra.isWinner0() && !igra.isWinnerX()) {
 			System.out.println("Unesi poziciju(0-8):");
 			int pozicija = s.nextInt();
 			if(igra.isValidMove(pozicija) == true && igra.isFieldFree(new ArrayList<String>(), pozicija) == true) {
@@ -92,7 +91,7 @@ public class Zadatak {
 				System.out.println();
 			}
 	}
-		igra.printTablu();
+
 		if(igra.gameScore() == 1) {
 			igracX++;
 		}
@@ -127,8 +126,7 @@ public class Zadatak {
 		
 		}	
 		s.close();
-
-			
+//igra.printTablu();			
 		
 		
 	

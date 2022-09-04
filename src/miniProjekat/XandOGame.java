@@ -38,8 +38,8 @@ public class XandOGame extends Player {
 //	Pobednik je ukoliko prosledjeni igrac ima 3 vezana svoja znaka ili po koloni ili po redu ili po dijgonalama
 //	Metodu isWinnerO -  metoda vraca rezultat igre za igraca O.
 //	Pobednik je ukoliko prosledjeni igrac ima 3 vezana svoja znaka ili po koloni ili po redu ili po dijgonalama
-//	Metodu isValidMove koja vraca informaciju da li je 
-//	pozicija na koju igrac zeli da odigra potez validna. Pozicija je validna ako je u opsegu od 0 do 8
+//	Metodu isigracidMove koja vraca informaciju da li je 
+//	pozicija na koju igrac zeli da odigra potez igracidna. Pozicija je igracidna ako je u opsegu od 0 do 8
 //	Metodu gameScore, metoda vraca informaciju za kraj igre.
 //	Ukoliko je pobednik igrac x, metoda vraca 1
 //	Ukoliko je pobednik igrac o, metoda vraca 2
@@ -55,7 +55,7 @@ public class XandOGame extends Player {
 	
 	
 
-	
+
 	public XandOGame() {
 		for (int i = 0; i <= 8; i++) {
 			this.table.add(" ");
@@ -88,16 +88,12 @@ public class XandOGame extends Player {
 	}
 	
 	public void printTablu() {
-		for (int i = 0; i <= 2; i++) {
+		for (int i = 0; i <= 8; i++) {
 			System.out.print(this.table.get(i) + " | ");
-		}
-		System.out.println();
-		for (int i = 3; i <= 5; i++) {
-			System.out.print(this.table.get(i) + " | ");
-		}
-		System.out.println();
-		for (int i = 6; i <= 8; i++) {
-			System.out.print(this.table.get(i) + " | ");
+			if (i == 2 || i == 5 || i == 8) {
+				System.out.println();
+			}
+				
 		}
 		System.out.println();
 		System.out.println();
@@ -118,98 +114,66 @@ public class XandOGame extends Player {
 				brojac++;
 			}
 		}
-		return (brojac == 9) ? true : false;
+		return brojac == 9;
 	}
 	
 	public boolean isFieldFree(ArrayList<String> table, int pozicija) {
-		return (this.table.get(pozicija).equals(" ")) ? true : false;
+		return this.table.get(pozicija).equals(" ");
+
 		
 	}
 	
 	public void playNext() {
-		if(this.nextPlayer.equals("x")) {
-			this.nextPlayer = "0";
-		} else if (this.nextPlayer.equals("0")) {
-			this.nextPlayer = "x";
-		}
+		this.nextPlayer = this.nextPlayer.equals("x") ? "0" : "x";
+
 	}
 	
 	public void makeAMove(int pozicija) {
-		if(this.nextPlayer.equals("x")) {
-		this.table.set(pozicija, "x");
+		this.table.set(pozicija, this.nextPlayer);
+
 		}
-		if(this.nextPlayer.equals("0")) {
-			this.table.set(pozicija, "0");
-			}
+	public boolean isWinner(String igrac) {
+		if(this.table.get(0).equals(igrac) && this.table.get(1).equals(igrac) && this.table.get(2).equals(igrac)) {
+			return true;
+		}else if(this.table.get(3).equals(igrac) && this.table.get(4).equals(igrac) && this.table.get(5).equals(igrac)) {
+			return true;
+		}else if(this.table.get(6).equals(igrac) && this.table.get(7).equals(igrac) && this.table.get(8).equals(igrac)) {
+			return true;
+		}else if(this.table.get(0).equals(igrac) && this.table.get(3).equals(igrac) && this.table.get(6).equals(igrac)) {
+			return true;
+		}else if(this.table.get(1).equals(igrac) && this.table.get(4).equals(igrac) && this.table.get(7).equals(igrac)) {
+			return true;
+		}else if(this.table.get(2).equals(igrac) && this.table.get(5).equals(igrac) && this.table.get(8).equals(igrac)) {
+			return true;
+		}else if(this.table.get(0).equals(igrac) && this.table.get(4).equals(igrac) && this.table.get(8).equals(igrac)) {
+			return true;
+		}else if(this.table.get(2).equals(igrac) && this.table.get(4).equals(igrac) && this.table.get(6).equals(igrac)) {
+			return true;
 		}
-	
-	public boolean isWinnerX() {
-		if(this.table.get(0).equals("x") && this.table.get(1).equals("x") && this.table.get(2).equals("x")) {
-			return true;
-		}else if(this.table.get(3).equals("x") && this.table.get(4).equals("x") && this.table.get(5).equals("x")) {
-			return true;
-		}else if(this.table.get(6).equals("x") && this.table.get(7).equals("x") && this.table.get(8).equals("x")) {
-			return true;
-		}else if(this.table.get(0).equals("x") && this.table.get(3).equals("x") && this.table.get(6).equals("x")) {
-			return true;
-		}else if(this.table.get(1).equals("x") && this.table.get(4).equals("x") && this.table.get(7).equals("x")) {
-			return true;
-		}else if(this.table.get(2).equals("x") && this.table.get(5).equals("x") && this.table.get(8).equals("x")) {
-			return true;
-		}else if(this.table.get(0).equals("x") && this.table.get(4).equals("x") && this.table.get(8).equals("x")) {
-			return true;
-		}else if(this.table.get(2).equals("x") && this.table.get(4).equals("x") && this.table.get(6).equals("x")) {
-			return true;
-		}else return false;
+		return false;
 	}
-	
-	public boolean isWinner0() {
-		if(this.table.get(0).equals("0") && this.table.get(1).equals("0") && this.table.get(2).equals("0")) {
-			return true;
-		}else if(this.table.get(3).equals("0") && this.table.get(4).equals("0") && this.table.get(5).equals("0")) {
-			return true;
-		}else if(this.table.get(6).equals("0") && this.table.get(7).equals("0") && this.table.get(8).equals("0")) {
-			return true;
-		}else if(this.table.get(0).equals("0") && this.table.get(3).equals("0") && this.table.get(6).equals("0")) {
-			return true;
-		}else if(this.table.get(1).equals("0") && this.table.get(4).equals("0") && this.table.get(7).equals("0")) {
-			return true;
-		}else if(this.table.get(2).equals("0") && this.table.get(5).equals("0") && this.table.get(8).equals("0")) {
-			return true;
-		}else if(this.table.get(0).equals("0") && this.table.get(4).equals("0") && this.table.get(8).equals("0")) {
-			return true;
-		}else if(this.table.get(2).equals("0") && this.table.get(4).equals("0") && this.table.get(6).equals("0")) {
-			return true;
-		}else return false;
+	public boolean isWinnerX() { 
+		return this.isWinner("x");
 	}
-	
+	public boolean isWinner0() { 
+		return this.isWinner("0");
+	}
+
 
 	public boolean isValidMove(int pozicija) {
-		return (pozicija >= 0 && pozicija <= 8) ? true : false;
+		return pozicija >= 0 && pozicija <= 8;
 		
 	}
 	
 	public int gameScore() {
-		if(this.isWinnerX() == true) {
+		if(this.isWinnerX()) {
 			return 1;
 		}
-		if(this.isWinner0() == true) {
+		if(this.isWinner0()) {
 			return 2;
 		}
 		return 0;
 	}
 
-	
-	
-
-	
-
-
-	
-	
-	
-	
-	
-	
 	
 }
